@@ -1,0 +1,110 @@
+Al inicar un proyecto node.js debemos de crear priemero nuestro archivo package.json
+dentro de la carpeta donde comencemos a desarrollar el proyecto.
+
+Para ello utilisamos el siguiente comando: npm init --yes
+se creara una estructura muy parecida a la siguiente:
+{
+  "name": "page-school-crud", //corresponde al nombre de nuestro proyecto
+  "version": "1.0.0", //la version del proyecto, esto nos msotrara la cantida de veces que ha sido modificaod el proyecto
+	//en descripcion podemos colocarle un nombre con el cual se podra buscar mediante npm
+  "description": "",
+//con el main solo de decimos al packaje.json con que archivo es el que arranca toda la aplicacion
+  "main": "index.js",
+//el apartado de scripts nos permite escribir nuestros propios comando que podemos ejecutar atraves de npm
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+lo siguiente que debemos de hacer es instalar las siguientes librerias por medio de npm:
+//express
+es un framework de servidor de node, nos permite escribir codigo de servidor de manera resumida,
+//ejs
+es un motor de plantillas, es una mejora al html, nos srive para pintar datos en el html
+
+//morgan
+npm i express ejs morgan
+nos sirve para ver en consola las peticiones que estan haciendo los clientes
+
+
+ahora dentro del package.json en el aparatdo de scripts crearemos nuestro propio comando,
+en este caso se llamara "dev" y su valor sera "node rc", si te das cuenta apunta 
+a nuestra carpeta src y por default ejecuta el archivo index, de este modo el comando
+ejecuta el servidor por nosotros
+
+ahora probamos nuestro comando y ejecutamos en consola:
+npm run dev
+
+//al principio este proceso parece as largo, pero ayuda mucho cuando necesitas ejecutar varios
+comando la mismo tiempo y de esta forma guardas varios comando dentro de uno, que puede ser el dev
+
+/**/
+ahora agregamos otro comando el cual se llamara "start" y su valor sera "node src" que de
+igual forma lo que hace es arrancar el servidor, la diferencia es que el primer comando al que se
+nombre dev es un comando que se ejecutara a nuestro gusto cuando estemos desarrollando
+nuestro proyecto de manera local, mientras que cuando despleguemos nuestro proyecto en un
+host en la nube por default el comando que se ejecuta es el de "start" y es hay donde se le debe
+de indicar que archivo es que el que debe de arrancar.
+
+bien ahora instalaremos otro modulo el cual se llama nodemon, al momento de hacer la instalacion 
+se le indicara con un flag (-D) , esta opcion es para indicarle que este modelo sera instalado como una 
+independencia de desarrollo, es decir no sera lista dentro de las dependecias, si no en otro lugar
+llamdo independecias de desarrollo.
+npm i nodemon -D
+
+//la magia de nodemon es que cada ves que se haga un cambio dentro del codigo
+de nuestro proyecto , se refresacaran los cambios de manera automatica,sin necesidad de
+estar refrescando la pagina o el proyecto constantemente
+
+ahora en el apartado de script de nuestro packaje.json cambiamos el valor del comando 
+"dev"por nodemon src"", esto es para que se active el reinicie de forma automatica el
+servidor y mostrar los cambios.
+
+//***
+para utilizar los modulos que instalamos y que aparecen dentro de nuestras dependencias
+tenemos que utilzar la palabra reservada require
+//entramos a nuestro archivo index.js y desde hay los llamamos de la siguiente
+manera:
+
+const express = require('express');
+
+//despues ejecutamos ese modulo guardandolo en otra constante:
+const app = express();
+
+debemos de guardarlo dentro de una constante por que al ejecutar el modulo lo que hara 
+sera devolvernos un objeto
+
+A su ves la constante nos sirve para poder crear un servidor, es decir esa constante app es el servidor.
+
+bien ahora en la propiedad listen de express, le diremos servidor escucha
+y este escuhara el puerto en el que queremos que se ejecute en este ejemplo usaremos el puerto
+3000, y despues de que se ejecute le pasaremos como segundo parametro un funcion anonina
+del tipo arrow function para que cuando se ejecute nos avise que ya se esta ejecutando,
+para ello haremos un console.log que nos mandara el mensaje 'server on port', 3000
+
+app.listen(3000,()=>{
+	console.log('Server on port',3000);
+}) 
+
+si entramos desde nuestro navegador al puerto 30000
+atraves del localhost:3000
+
+veremos que nos muestra el siguiente mensaje : Cannot GET /
+//esto a simple vista parece un erro, pero no lo es, lo que sucede es que como no
+se le ha mandado una url que procesar node.js por default envia ese mensaje.
+
+//creamos una constante la cual tiene la caracteristica de que
+//puede ser accedida desde cualquier parte de nuestra aplicacion
+
+esto lo hacemos con el fin de optimizar nuestro codigo ya que si en futuro
+quisieramos cmabiar el puerto de escuha de nuestro proyecto, entre mas
+codigo tengamos se hara mas complejo y dificil de manejar, por lo que
+guardando el valor del purto dentro de una constante hacemos que con el cambio,
+de un solo valor  se actualize en todos los demas lugares donde se este ocupando
+ese valor tambien.
+
+vscode-icons
+ Windows => File > Preferences > File Icon Theme > VSCode Icons.
