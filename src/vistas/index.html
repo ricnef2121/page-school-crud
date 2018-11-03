@@ -9,12 +9,34 @@
         <%= title %>
     </title>
     <% include partials/head.html%>
-
 </head>
 
 
 <body>
     <% include partials/navigation.html%>
+        <!--imagen-->
+
+        <div class="container">
+            <header class="row">
+                <div class="col-lg-12 p-5 text-center">
+                    <img src="/img/pp.PNG" class="animated bounceIn" alt="pide piper">
+                </div>
+            </header>
+        </div>
+
+        <!--Section One-->
+        <div class="container-fluid" id="about">
+            <div class="row bg-dark text-white p-5 text-center">
+                <div class="col-sm-6">
+                    <i class="fab fa-aviato fa-10x"></i>
+                </div>
+                <div class="col-sm-6">
+                    <h3> Aviato in</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, aut, accusamus beatae sapiente nulla quam iusto iste architecto quod ea corrupti eum asperiores. Possimus eligendi, eius nostrum necessitatibus itaque ea!</p>
+                </div>
+            </div>
+        </div>
+        <% include partials/footer.html%>
 </body>
 
 </html>

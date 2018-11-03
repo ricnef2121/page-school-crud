@@ -108,3 +108,9 @@ ese valor tambien.
 
 vscode-icons
  Windows => File > Preferences > File Icon Theme > VSCode Icons.
+
+ uiGradients
+ https://uigradients.com/#Royal
+
+animate css
+ https://daneden.github.io/animate.css/

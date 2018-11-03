@@ -32,14 +32,8 @@ app.set('views', path.join(__dirname, 'vistas'));
 app.use(require('./rutas/index'));
 
 
-
-
-
-
-
-
 //static files
-
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 
